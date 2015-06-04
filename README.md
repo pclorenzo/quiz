@@ -1,3 +1,3 @@
 Proyecto: Quiz
-Autor: Pablo C. Lorenzo
 
+Autor: Pablo C. Lorenzo

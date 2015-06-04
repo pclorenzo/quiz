@@ -36,3 +36,15 @@ footer {
 nav span {
   margin: 0px 10px 0px 0px;
 }
+
+.author_header {
+  text-align: left;  
+}
+
+.author {
+  float: left;
+}
+
+.author_end {
+	clear: both;
+}
