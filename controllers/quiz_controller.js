@@ -1,3 +1,4 @@
+// Ignorar estos comentarios.
 /// <reference path="../typings/node/node.d.ts" />
 /// <reference path="../typings/express/express.d.ts" />
 
@@ -14,4 +15,9 @@ exports.answer = function(req, res) {
 	} else {
 		res.render("quizes/answer", {respuesta: "Incorrecto"});
 	}
+};
+
+//GET /author
+exports.author = function(req, res) {
+	res.render("/author", {});
 };
