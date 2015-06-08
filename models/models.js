@@ -8,7 +8,7 @@ var path = require('path');
 
 //Postgres 	DATABASE_URL = postgres://user:passwd@host:port/database
 //SQLite	DATABASE_URL = sqlite://:@:/
-var url = process.env.DATABASE_URL.match('/(.*)\:\/\/(.*?)\:(.*)@(.*)\:(.*)\/(.*)/');
+var url = process.env.DATABASE_URL.match(/(.*)\:\/\/(.*?)\:(.*)@(.*)\:(.*)\/(.*)/);
 var DB_name  = (url[6]||null);
 var user 	 = (url[2]||null);
 var pwd 	 = (url[3]||null);
@@ -22,7 +22,7 @@ var storage = process.env.DATABASE_STORAGE;
 var Sequelize = require('sequelize');
 
 //Usar bbdd SQLite o Postgres
-var sequelize = new Sequelize(DB_name, usr, pwd,
+var sequelize = new Sequelize(DB_name, user, pwd,
 	{
 		dialect: protocol, 
 		protocol: protocol, 
