@@ -20,9 +20,29 @@ exports.load = function(req, res, next, quizId) {
 
 //GET /quizes
 exports.index = function(req, res) {
-	models.Quiz.findAll().then(function(quizes) {
-		res.render('quizes/index', {quizes: quizes});	
-	});
+	//¿El filtro de preguntas viene vacio?
+	if(req.query.search === undefined) {
+		
+		//Está vacio => Se recuperan TODAS las preguntas ordenadas en forma ascendente
+		models.Quiz.findAll({order: 'pregunta ASC'}).then(
+			function(quizes) {
+				res.render('quizes/index', {quizes: quizes});
+			}
+		);
+	} else {
+		//No está vacio => Se recupera y procesa dicho filtro de búsqueda
+		var search = req.query.search;
+		
+		//Se convierte la cadena a %text%text%.....
+		var condition = ('%' + search + '%').replace(/ /g,'%');  //remplazo TODO(/g) blankspace por '%'
+		
+		//Se realiza la query pasando la condition y ordenando en forma ascendente.	
+		models.Quiz.findAll({where: ["pregunta like ?", condition], order: 'pregunta ASC'}).then(
+			function(quizes) {
+				res.render('quizes/index', {quizes: quizes});
+			}
+		);	 
+	}
 };
 
 //GET /quizes/:id

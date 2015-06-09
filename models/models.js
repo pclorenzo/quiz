@@ -41,6 +41,16 @@ sequelize.sync().then(function(){
 	Quiz.count().then(function(count){
 		if(count === 0){
 			Quiz.create({pregunta:'Capital de Italia', respuesta:'Roma'});
+			Quiz.create({pregunta:'Modelo del primer chip de Intel', respuesta:'4004'});
+			Quiz.create({pregunta:'Ciudad mas poblada de Uruguay', respuesta:'Montevideo'});
+			Quiz.create({pregunta:'Taipei es la capital de ...', respuesta:'Taiwan'});
+			Quiz.create({pregunta:'Número atómico del Hidrógeno', respuesta:'1'});
+			Quiz.create({pregunta:'Peor que programar en COBOL es programar en ...', respuesta:'Genexus'});
+			Quiz.create({pregunta:'Nombre de pila del creador del lenguaje C', respuesta:'Dennis'});
+			Quiz.create({pregunta:'Nombre de pila del creador del lenguaje C++', respuesta:'Bjarne'});
+			Quiz.create({pregunta:'La ceremonia denominada "Vuelta Olímpica" fue realizada por primer vez por ...', respuesta:'Uruguay'});
+			Quiz.create({pregunta:'Club de futbol mas glorioso de Uruguay', respuesta:'Club Atlético Peñarol'});
+			Quiz.create({pregunta:'Qué está primero, el huevo o la gallina', respuesta:'STACK OVERFLOW'});
 			Quiz.create({pregunta:'Capital de Portugal', respuesta:'Lisboa'}).then(function(){
 				console.log('Base de datos inicializada');
 			});
