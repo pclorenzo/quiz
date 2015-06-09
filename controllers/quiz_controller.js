@@ -23,9 +23,9 @@ exports.answer = function(req, res) {
 	models.Quiz.find(req.params.quizId).then(function(quiz){
 		var respuesta = (quiz.respuesta || '');
 		if (req.query.respuesta.toUpperCase() === respuesta.toUpperCase()) {
-			res.render("quizes/answer", {respuesta: "Correcto"});
+			res.render("quizes/answer", {quiz: quiz, respuesta: "Correcto"});
 		} else {
-			res.render("quizes/answer", {respuesta: "Incorrecto"});
+			res.render("quizes/answer", {quiz: quiz, respuesta: "Incorrecto"});
 		}
 	}); 
 }; 
