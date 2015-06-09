@@ -10,6 +10,7 @@ body {
 #page-wrap {
   margin: 2% auto;
   color: white;
+  width: 95%;
 }
 
 #page-wrap > .main {

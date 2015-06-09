@@ -1,5 +1,6 @@
 body {
 	background: #333;
+	font-size: xx-large;
 }
 
 #page-wrap:after {
@@ -8,10 +9,6 @@ body {
 
 h2 span, section h3 {
 	display: none;
-}
-
-body {
-	font-size: xx-large;
 }
 
 footer, input {
