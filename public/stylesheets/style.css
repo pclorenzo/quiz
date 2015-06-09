@@ -48,3 +48,7 @@ nav span {
 .author_end {
 	clear: both;
 }
+
+.texto_izq {
+  text-align: left;
+}
