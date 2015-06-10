@@ -77,10 +77,37 @@ exports.create = function(req, res) {
 	
 	quiz.validate().then(
 		function(err){
-			if(err) {
+			if (err) {
 				res.render('quizes/new', {quiz: quiz, errors: err.errors});
 			} else {
 				quiz.save({fields: ["pregunta","respuesta"]}).then(
+					function() {
+						res.redirect('/quizes');
+					}
+				);
+			}
+		}
+	);
+};
+
+//GET /quizes/:id/edit
+exports.edit = function(req, res) {
+	//Autoload ya cargo en req la instancia de quiz identificada por :id
+	var quiz = req.quiz;
+	res.render('quizes/edit', {quiz: quiz, errors:[]});
+};
+
+//PUT /quizes/:id
+exports.update = function(req, res) {
+	req.quiz.pregunta = req.body.quiz.pregunta;
+	req.quiz.respuesta = req.body.quiz.respuesta;
+	
+	req.quiz.validate().then(
+		function(err) {
+			if (err) {
+				res.render('quizes/new', {quiz: req.quiz, errors: err.errors});
+			} else {
+				req.quiz.save({fields: ["pregunta","respuesta"]}).then(
 					function() {
 						res.redirect('/quizes');
 					}
