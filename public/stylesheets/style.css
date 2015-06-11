@@ -1,8 +1,9 @@
+/*
 * {
   margin: 0;
   padding: 0;
 }
-
+*/
 body {
   font: 16px Georgia, serif;
 }
@@ -57,4 +58,8 @@ nav span {
 
 .author_end {
 	clear: both;
+}
+
+.normal_btn {
+  width: 100px;
 }

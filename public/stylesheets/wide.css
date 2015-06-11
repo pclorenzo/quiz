@@ -30,3 +30,7 @@ footer {
 .texto_izq {
   text-align: left;
 }
+
+input {
+	width: 300px;
+}
