@@ -11,12 +11,12 @@
 	<tr>
 		<td class="just_izq"><label for="tema" class="rem">Tema:</label></td>
 		<td class="just_izq">
-			<select name="tema">
-				<option value="otro" selected>Otro</option>
-				<option value="humanidades">Humanidades</option>
-				<option value="ocio">Ocio</option>
-				<option value="ciencia">Ciencia</option>
-				<option value="tecnologia">Tecnología</option>
+			<select name="quiz[tema]">
+				<option <%= (quiz.tema === 'otro') ? "selected" : "" %> value="otro">Otro</option>
+				<option <%= (quiz.tema === 'humanidades') ? "selected" : "" %> value="humanidades">Humanidades</option>
+				<option <%= (quiz.tema === 'ocio') ? "selected" : "" %> value="ocio">Ocio</option>
+				<option <%= (quiz.tema === 'ciencia') ? "selected" : "" %> value="ciencia">Ciencia</option>
+				<option <%= (quiz.tema === 'tecnologia') ? "selected" : "" %> value="tecnologia">Tecnología</option>
 			</select>
 		</td>
 	</tr>
