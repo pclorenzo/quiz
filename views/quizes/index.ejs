@@ -8,6 +8,11 @@
 		<td class="texto_izq"><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
 		<td class="texto_izq"> <%= quizes[i].tema %></td>
 		<td class="texto_izq"> <a href="quizes/<%= quizes[i].id %>/edit"><button>editar</button></a></td>
+		<td class="texto_izq"> 
+			<form method="POST" action="quizes/<%= quizes[i].id %>?_method=delete">
+				<button type="submit" onClick="return confirm('Borrar: <%= quizes[i].pregunta %>')">borrar</button>
+			</form>
+		</td>
 	</tr>
 <% } %>
 </table>
