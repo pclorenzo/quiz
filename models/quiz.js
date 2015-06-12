@@ -5,7 +5,8 @@
 /// <reference path="../typings/sequelize/sequelize.d.ts" />
 
 module.exports = function(sequelize, DataTypes) {
-	return sequelize.define('Quiz', 
+	return sequelize.define(
+		'Quiz', 
 		{
 			pregunta: { 
 				type: DataTypes.STRING,
@@ -25,5 +26,6 @@ module.exports = function(sequelize, DataTypes) {
 					}
 				}
 			}
-		});
+		}
+	);
 };
