@@ -4,6 +4,7 @@ var router = express.Router();
 //Controllers
 var quizController = require('../controllers/quiz_controller');
 var commentController = require('../controllers/comment_controller');
+var sessionController = require('../controllers/session_controller');
 
 //Home Page
 router.get('/', function(req, res) {
@@ -13,6 +14,11 @@ router.get('/', function(req, res) {
 //Autoload de llamadas con :quizId
 router.param('quizId',                            quizController.load);
  
+//Rutas de Session
+router.get('/login',                              sessionController.new);
+router.post('/login',                             sessionController.create);
+router.get('/logout',                             sessionController.destroy);
+
 //Rutas de Quizes
 router.get('/quizes',                             quizController.index);
 router.get('/quizes/:quizId(\\d+)',               quizController.show);

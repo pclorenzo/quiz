@@ -57,22 +57,26 @@ exports.index = function(req, res) {
 
 //GET /quizes/:id
 exports.show = function(req, res) {
-	models.Quiz.find(req.params.quizId).then(function(quiz){
-		res.render("quizes/show", {quiz: req.quiz, errors: []});	
-	});
+	models.Quiz.findById(req.params.quizId).then(
+		function(quiz){
+			res.render("quizes/show", {quiz: req.quiz, errors: []});	
+		}
+	);
 };
 
 //GET /quizes/:id/answer
 exports.answer = function(req, res) {
-	models.Quiz.find(req.params.quizId).then(function(quiz){
-		var respuesta = (req.quiz.respuesta || '');
-		
-		var resultado = 'Incorrecto';
-		if (req.query.respuesta.toUpperCase() === respuesta.toUpperCase()) {
-			resultado = "Correcto";
+	models.Quiz.findById(req.params.quizId).then(
+		function(quiz){
+			var respuesta = (req.quiz.respuesta || '');
+			
+			var resultado = 'Incorrecto';
+			if (req.query.respuesta.toUpperCase() === respuesta.toUpperCase()) {
+				resultado = "Correcto";
+			}
+			res.render("quizes/answer", {quiz: req.quiz, respuesta: resultado, errors: []});
 		}
-		res.render("quizes/answer", {quiz: req.quiz, respuesta: resultado, errors: []});
-	}); 
+	); 
 }; 
 
 //GET /quizes/new
