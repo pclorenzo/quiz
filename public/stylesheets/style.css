@@ -63,3 +63,7 @@ nav span {
 .normal_btn {
   width: 100px;
 }
+
+.right {
+  float: right;
+}
