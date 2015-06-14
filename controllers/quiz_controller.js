@@ -15,7 +15,6 @@ exports.load = function(req, res, next, quizId) {
 		function(quiz) {
 			if(quiz) {
 				req.quiz = quiz;
-				console.log('\n\n' + JSON.stringify(quiz) + '\n\n');
 				next();
 			} else {
 				next(new Error('No existe quizId=' + quizId));

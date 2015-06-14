@@ -4,8 +4,31 @@
 
 var models = require('../models/models.js');
 
+//Autoload - filtra cualquier ruta que incluye :quizId
+exports.load = function(req, res, next, commentId) {
+	models.Comment
+		.find(
+			{
+				where: {id: Number(commentId)}
+			}
+		).then(
+			function(comment) {
+				if(comment) {
+					req.comment = comment;
+					next();
+				} else {
+					next(new Error('No existe commentId=' + commentId));
+				}
+			}
+		).catch(
+			function(error){ 
+				next(error); 
+			}
+		);	
+};
+
 //GET /quizes/:quizId/comments/new
-exports.newcomment = function(req, res) {
+exports.new = function(req, res) {
 	res.render('comments/new', {quizId: req.params.quizId, errors: []});	
 };
 
@@ -19,7 +42,7 @@ exports.create = function(req, res, next) {
 	);
 	
 	comment.validate().then(
-		function (err) {
+		function(err) {
 			if (err) {
 				res.render('comments/new', {comment: comment, quizId: req.params.quizId, errors: err.errors});
 			} else {
@@ -36,4 +59,20 @@ exports.create = function(req, res, next) {
 		}
 	);
 	
+};
+
+exports.publish = function(req, res, next) {
+	req.comment.publicado = true;
+	
+	req.comment.save({fields: ["publicado"]})
+	.then(
+		function() {
+			res.redirect('/quizes/' + req.params.quizId);
+		}
+	)
+	.catch(
+		function (error) {
+			next(error);
+		}			
+	);
 };
