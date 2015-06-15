@@ -40,3 +40,31 @@ exports.destroy = function(req, res) {
 	delete req.session.user;
 	res.redirect(req.session.redir.toString());
 };
+
+//La  artmética de tiempo se realiza en Milisegundos
+var MS_PER_MINUTE = 60000;
+var TWO_MINUTES = 2 * MS_PER_MINUTE;
+
+exports.autoLogout = function (req, res, next) {
+    if (!req.path.match(/\/login|\/logout/)) {
+       
+        //Control de expriacion de session (2 minutos) para cualquier URL que no tenga /login o /logout       
+        var now = new Date();
+        var now_minus_2 = new Date(now - TWO_MINUTES);
+        req.session.timestamp = req.session.timestamp || now;
+        
+        console.log(req.session.timestamp);
+        console.log(now_minus_2);
+        
+        if (req.session.timestamp > now_minus_2) {
+            //Expiró el tiempo
+			res.session.errors = [{'message': 'Expiró el tiempo de la sesión'}];
+            req.session.timestamp = undefined;
+			res.redirect('/login');
+        } else {
+            req.session.timestamp = now;
+        }
+    }
+	
+	next();
+};

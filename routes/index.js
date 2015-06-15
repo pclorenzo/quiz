@@ -6,6 +6,9 @@ var quizController = require('../controllers/quiz_controller');
 var commentController = require('../controllers/comment_controller');
 var sessionController = require('../controllers/session_controller');
 
+//Control de expirasión se sesión
+router.use('/', sessionController.autoLogout);
+
 //Home Page
 router.get('/', function(req, res) {
   res.render('index', {title: 'Quiz', errors: []});
