@@ -1,22 +1,22 @@
 <table>
 	<tr>
-		<td class="just_izq">Número total de preguntas          :</td>
-		<td class="just_der"> <%= stats.preguntas %></td>
+		<td class="just_izq">Número total de preguntas</td>
+		<td class="just_der"><%= stats.preguntas %></td>
 	</tr>
 	<tr>
-		<td class="just_izq">Número total de cometarios         :</td>
-		<td class="just_der"> <%= stats.comentarios %></td>
+		<td class="just_izq">Número total de cometarios</td>
+		<td class="just_der"><%= stats.comentarios %></td>
 	</tr>
 	<tr>
-		<td class="just_izq">Promedio de cometarios/pregunta    :</td>
-		<td class="just_der"> <%= (stats.comentarios/stats.preguntas) %></td>
+		<td class="just_izq">Promedio de cometarios-pregunta</td>
+		<td class="just_der"><%= (stats.comentarios/stats.preguntas).toFixed(2) %></td>
 	</tr>
 	<tr>
-		<td class="just_izq">Preguntas con comentarios          :</td>
-		<td class="just_der"> <%= stats.conComentarios %></td>
+		<td class="just_izq">Preguntas con comentarios</td>
+		<td class="just_der"><%= stats.conComentarios %></td>
 	</tr>
 	<tr>
-		<td class="just_izq">Preguntas sin comentarios          :</td>
-		<td class="just_der"> <%= stats.sinComentarios %></td>
+		<td class="just_izq">Preguntas sin comentarios</td>
+		<td class="just_der"><%= stats.sinComentarios %></td>
 	</tr>
 </table>
