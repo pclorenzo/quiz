@@ -11,7 +11,6 @@ body {
 #page-wrap {
   margin: 2% auto;
   color: white;
-  width: 95%;
 }
 
 #page-wrap > .main {
@@ -48,14 +47,6 @@ nav span {
   text-align: left;  
 }
 
-.just_izq {
-  text-align: left;  
-}
-
-.just_der {
-  text-align: right;  
-}
-
 .author {
   float: left;
 }
@@ -70,4 +61,17 @@ nav span {
 
 .right {
   float: right;
+}
+
+.just_izq {
+  text-align: left;  
+}
+
+.just_der {
+  text-align: right;  
+}
+
+.just_der_pad_10px {
+  text-align: right;
+  padding-left: 10px;  
 }

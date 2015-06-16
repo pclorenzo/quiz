@@ -42,8 +42,8 @@ exports.destroy = function(req, res) {
 };
 
 //La  artmética de tiempo se realiza en Milisegundos (2mins = 120.000ms)
-var MS_PER_MINUTE = 1000;
-var TWO_MINUTES = 10 * MS_PER_MINUTE;
+var MS_PER_MINUTE = 60000;
+var TWO_MINUTES = 2 * MS_PER_MINUTE;
 
 exports.autoLogout = function (req, res, next) {
 	//Si la URL no es login o logout y además existe una session

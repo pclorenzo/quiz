@@ -5,11 +5,11 @@
 <table>
 <% var i; for(i=0; i<quizes.length; i++) { %>
 	<tr>
-		<td class="texto_izq"><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
-		<td class="texto_izq"> <%= quizes[i].tema %></td>
+		<td class="just_izq"><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
+		<td class="just_izq_pad_10px"> <%= quizes[i].tema %></td>
 		<% if (session.user) { %>
-		<td class="texto_izq"> <a href="quizes/<%= quizes[i].id %>/edit"><button>editar</button></a></td>
-		<td class="texto_izq"> 
+		<td class="just_izq_pad_10px"> <a href="quizes/<%= quizes[i].id %>/edit"><button>editar</button></a></td>
+		<td class="just_izq_pad_10px"> 
 			<form method="POST" action="quizes/<%= quizes[i].id %>?_method=delete">
 				<button type="submit" onClick="return confirm('Borrar: <%= quizes[i].pregunta %>')">borrar</button>
 			</form>

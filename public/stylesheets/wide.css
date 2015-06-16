@@ -2,14 +2,18 @@ body {
 	background: #999;
 }
 
+#page-wrap {
+	width: 85%;
+}
+
 #page-wrap:after {
-	content: "Wide Layout";
+	content: "Wide Layout";	
 }
 
 nav {
 	float: left;
 	width: 15%;
-	height: 400px;
+	height: 480px;
 }
 
 nav span {
@@ -19,7 +23,7 @@ nav span {
 section {
 	float: right;
 	width: 80%;
-	height: 400px;
+	height: 480px;
 }
 
 footer {
@@ -31,6 +35,15 @@ footer {
   text-align: left;
 }
 
+#n1 {
+	text-align: left;
+}
+
 input {
 	width: 300px;
+}
+
+.just_izq_pad_10px {
+  text-align: left;
+  padding-left: 10px;  
 }

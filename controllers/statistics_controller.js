@@ -30,11 +30,11 @@ exports.statistics = function (req, res) {
 							
 							//Preguntas SIN comentario (todas - con comentario)
 							stats.sinComentarios = stats.preguntas - count;
-							
-							console.log('\n\n' + JSON.stringify(stats) + '\n\n');
+						
+							//Ahora que el objeto statics esta completo renderizamos la página
+							res.render('statistics/show', {stats: stats, errors: []});
 						}
 					);
-					res.render('statistics/show', {stats: stats, errors: []});
 				}
 			);
 		}
