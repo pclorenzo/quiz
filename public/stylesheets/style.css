@@ -52,6 +52,10 @@ nav span {
   text-align: left;  
 }
 
+.just_der {
+  text-align: right;  
+}
+
 .author {
   float: left;
 }
