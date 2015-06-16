@@ -23,7 +23,7 @@ exports.create = function(req, res) {
 	userController.autenticar(login, password, 
 		function(error, user) {
 			if (error) {
-				req.session.errors = [{'message': 'Se ha producido un error ' + error}];
+				req.session.errors = [{'message': error.toString()}];
 				res.redirect('/login');
 				return;
 			}
@@ -41,28 +41,29 @@ exports.destroy = function(req, res) {
 	res.redirect(req.session.redir.toString());
 };
 
-//La  artmética de tiempo se realiza en Milisegundos
-var MS_PER_MINUTE = 60000;
-var TWO_MINUTES = 2 * MS_PER_MINUTE;
+//La  artmética de tiempo se realiza en Milisegundos (2mins = 120.000ms)
+var MS_PER_MINUTE = 1000;
+var TWO_MINUTES = 10 * MS_PER_MINUTE;
 
 exports.autoLogout = function (req, res, next) {
-    if (!req.path.match(/\/login|\/logout/)) {
+	//Si la URL no es login o logout y además existe una session
+    if (!req.path.match(/\/login|\/logout/) && req.session.user) {
        
-        //Control de expriacion de session (2 minutos) para cualquier URL que no tenga /login o /logout       
-        var now = new Date();
-        var now_minus_2 = new Date(now - TWO_MINUTES);
-        req.session.timestamp = req.session.timestamp || now;
+        //Control de expriacion de session (2 minutos) para cualquier URL que no tenga /login o /logout
+		var now = new Date();    
+		req.session.timestamp = req.session.timestamp || now.getTime();
         
+		console.log('\n\n');
         console.log(req.session.timestamp);
-        console.log(now_minus_2);
-        
-        if (req.session.timestamp > now_minus_2) {
-            //Expiró el tiempo
-			res.session.errors = [{'message': 'Expiró el tiempo de la sesión'}];
-            req.session.timestamp = undefined;
+		console.log(now.getTime());
+        console.log('\n\n');
+		
+        if ((now.getTime() - req.session.timestamp) >= TWO_MINUTES) {
+            //Expiró el tiempo           
+			delete req.session.timestamp;
+			delete req.session.user;
+			req.session.errors = [{'message': 'Expiró el tiempo de la sesión'}];
 			res.redirect('/login');
-        } else {
-            req.session.timestamp = now;
         }
     }
 	

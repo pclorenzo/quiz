@@ -12,6 +12,7 @@ var methodOverride = require('method-override');
 var session = require('express-session');
 
 var routes = require('./routes/index');
+var sessionController = require('./controllers/session_controller.js');
 
 var app = express();
 
@@ -45,7 +46,8 @@ app.use(
     }
 );
 
-app.use('/', routes);
+app.use('/*',   sessionController.autoLogout);
+app.use('/',    routes);
 
 // catch 404 and forward to error handler
 app.use(
